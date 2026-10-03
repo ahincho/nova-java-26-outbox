@@ -9,5 +9,8 @@ create table outbox (
     time           timestamptz  not null,
     payload        jsonb        not null,
     traceparent    varchar(55),
-    tracestate     varchar(512)
+    tracestate     varchar(512),
+    -- La versión de CloudEvents sale como constante de la tabla: Kafka Connect no tiene cómo insertar el texto 1.0
+    -- como cabecera sin convertirlo en número.
+    specversion    varchar(10)  not null default '1.0'
 );

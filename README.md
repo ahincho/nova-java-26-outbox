@@ -71,7 +71,8 @@ Cada fila sale como un CloudEvent en modo binario:
 | el valor | `payload` |
 | `ce_id`, `ce_type`, `ce_source`, `ce_subject`, `ce_time` | `id`, `type`, `source`, `aggregate_id`, `time` |
 | `ce_traceparent`, `ce_tracestate` y `traceparent` | `traceparent` y `tracestate` |
-| `ce_specversion` y `content-type` | constantes, con `InsertHeader` |
+| `ce_specversion` | `specversion`, que la tabla llena con `1.0` |
+| `content-type` | una constante, con `InsertHeader` |
 
 Un registro que no se puede publicar deja la tarea del conector en `FAILED` y nada se adelanta: se vigila
 el estado del conector y el retraso del slot en `pg_replication_slots`.
